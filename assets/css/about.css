@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px 20px;
+
+        .logo {
+            text-decoration: none;
+            list-style: none;
+            font-size: xx-large;
+            color: gray;
+        }
+
+        .navbar {
+
+            ul {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                gap: 50px;
+                list-style: none;
+                margin-bottom: 0;
+
+
+                li{
+
+                    a{
+                        text-decoration: none;
+                        color: gray;
+                    }
+                    :hover{
+                        color: black;
+                        text-decoration: underline;
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+
+        .header-social-links {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+
+            a{
+                color: gray;
+            }
+            :hover{
+                color: black;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    hr{
+        opacity: 0.05;
+    }
+}
+
+
+/* main */
+main{
+    display: flex;
+    flex-direction: column;
+
+
+        /* main-hero-1 */
+    .main-hero-1 {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 50px;
+        gap: 5px;
+
+        h1{
+            font-size: xx-large;
+            margin: 20px 0;
+            color: gray;
+        }
+        p{
+            color: black;
+            font-size: 20px;
+            margin: 20px 0;
+        }
+        .btn-get-started {
+            text-decoration: none;
+            padding: 10px;
+            background-color: green;
+            margin: 0 550px;
+            border-radius: 10px;
+            color: whitesmoke;
+            margin-top: 20px;
+            /* margin-bottom: 20px; */
+        }
+    }
+
+    /* main-hero-2 */
+    .main-hero-2{
+        display: flex;
+        flex-direction: row;
+        margin: 50px 200px;
+        gap: 15px;
+
+
+        .main-hero-2-image{
+
+
+            .about-image{
+                width: 400px;
+                border-radius: 15px;
+            }
+        }
+
+
+        .main-hero-2-contents{
+            margin-top: 50px;
+
+
+            h1{
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .bio-data{
+                display: flex;
+                flex-direction: row;
+                /* gap: 20px; */
+
+
+                ul{
+                    list-style: none;
+
+
+                    li{
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/* footer */
+.footer {
+
+    .footer-container {
+        background-color: black;
+        margin-top: 110px;
+        text-align: center;
+        padding: 25px 0;
+
+        .copyright{
+            font-size: xx-large;
+        }
+        .credits a{
+            text-decoration: none;
+            color: gray;
+        }
+    }
+}
