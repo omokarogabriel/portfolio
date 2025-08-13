@@ -34,25 +34,60 @@
 //     navLink.classList.toggle('active');
 // })
 
-const showBurger = document.querySelector(".mobile-nav-show");
-const hideX = document.querySelector(".mobile-nav-hide");
-const lists = document.getElementsByTagName("ul");
-const both = document.querySelector(".mobile-nav-toggle");
+// const showBurger = document.querySelector(".mobile-nav-show");
+// const hideX = document.querySelector(".mobile-nav-hide");
+// const lists = document.getElementsByTagName("ul");
+// const both = document.querySelector(".mobile-nav-toggle");
 
 
-// function showHamburger() {
-    showBurger.addEventListener('click', () => {
-        hideX.classList.toggle("displays");
-        showBurger.classList.toggle("hide");
+// // function showHamburger() {
+//     showBurger.addEventListener('click', () => {
+//         hideX.classList.toggle("displays");
+//         showBurger.classList.toggle("hide");
 
         
-        // lists.classList.contains('open') ? lists.classList.remove('open') : lists.classList.add('open');        
-    })
-// }
+//         // lists.classList.contains('open') ? lists.classList.remove('open') : lists.classList.add('open');        
+//     })
+// // }
 
-hideX.addEventListener('click', () => {
-    hideX.classList.toggle("undisplays");
-    showBurger.classList.toggle("display");
+// hideX.addEventListener('click', () => {
+//     hideX.classList.toggle("undisplays");
+//     showBurger.classList.toggle("display");
 
-    // lists.classList.contains('open') ? lists.classList.remove('open') : lists.classList.add('open');        
-})
+//     // lists.classList.contains('open') ? lists.classList.remove('open') : lists.classList.add('open');        
+// })
+
+
+
+// Inside script.js
+// const hamburger = document.querySelector(".hamburger");
+// const navbar = document.querySelector("#navbar");
+
+// hamburger.addEventListener("click", () => {
+//     navbar.classList.toggle("active");
+//     hamburger.classList.toggle("open");
+// });
+
+
+// const hamburger = document.querySelector(".hamburger-menu");
+// const navList = document.querySelector(".navbar ul");
+// const showBurger = document.querySelector(".mobile-nav-show");
+// const hideX = document.querySelector(".mobile-nav-hide");
+
+// // Set initial state
+// hideX.style.display = "none";
+// navList.style.display = "none";
+
+// // Show menu
+// showBurger.addEventListener('click', () => {
+//     navList.style.display = "block";
+//     showBurger.style.display = "none";
+//     hideX.style.display = "inline-block";
+// });
+
+// // Hide menu
+// hideX.addEventListener('click', () => {
+//     navList.style.display = "none";
+//     showBurger.style.display = "inline-block";
+//     hideX.style.display = "none";
+// });
