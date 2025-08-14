@@ -39,6 +39,13 @@ jobs:
       # - name: Output image URI
       #   run: echo "Image pushed: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO_NAME:v1.00
 
+      - name: Deploy to ECS
+        run: |
+          aws ecs update-service \
+          --cluster portfolio-cluster \
+          --service portfolio-service \
+          --force-new-deployment \
+          --region us-east-1
 
 
 
