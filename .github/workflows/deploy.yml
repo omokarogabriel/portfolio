@@ -267,8 +267,14 @@ jobs:
          aws ecs describe-task-definition --task-definition $ECS_TASK_FAMILY \
          --query "taskDefinition.{containerDefinitions:containerDefinitions, family:family, taskRoleArn:taskRoleArn, executionRoleArn:executionRoleArn, networkMode:networkMode, volumes:volumes, placementConstraints:placementConstraints, requiresCompatibilities:requiresCompatibilities, cpu:cpu, memory:memory}" \
          > task-def.json
+        
 
 
          - name: Register new task definition
            run: |
            aws ecs register-task-definition --cli-input-json file://task-def.json
+           shell: bash
+           env:
+           AWS_REGION: us-east-1
+           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
