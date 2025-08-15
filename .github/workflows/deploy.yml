@@ -267,7 +267,7 @@ jobs:
          aws ecs describe-task-definition --task-definition $ECS_TASK_FAMILY \
          --query "taskDefinition.{containerDefinitions:containerDefinitions, family:family, taskRoleArn:taskRoleArn, executionRoleArn:executionRoleArn, networkMode:networkMode, volumes:volumes, placementConstraints:placementConstraints, requiresCompatibilities:requiresCompatibilities, cpu:cpu, memory:memory}" \
          > task-def.json
-         cat task-def.json
+
 
          - name: Register new task definition
            run: |
