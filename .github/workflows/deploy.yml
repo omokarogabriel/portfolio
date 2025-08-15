@@ -251,7 +251,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          IMAGE_URI=$(aws ecr describe-repositories --repository-names $ECR_REPO --query "repositories[0].repositoryUri" --output table)
+          IMAGE_URI=$(aws ecr describe-repositories --repository-names $ECR_REPO --query "repositories[0].repositoryUri" --output text)
           docker build -t $IMAGE_URI:$LATEST .
           docker push $IMAGE_URI:$LATEST
 
