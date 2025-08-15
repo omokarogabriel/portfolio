@@ -255,10 +255,20 @@ jobs:
           docker build -t $IMAGE_URI:$LATEST .
           docker push $IMAGE_URI:$LATEST
 
-      - name: Update ECS service
+      # - name: Update ECS service
+      #   run: |
+      #     TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition $ECS_TASK_FAMILY)
+      #     NEW_TASK_DEF=$(echo $TASK_DEFINITION | jq --arg IMAGE_URI "$(aws ecr describe-repositories --repository-names $ECR_REPO --query "repositories[0].repositoryUri" --output text):latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE_URI')
+      #     echo $NEW_TASK_DEF > new-task-def.json
+      #     aws ecs register-task-definition --cli-input-json file://new-task-def.json
+      #     aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment
+      - name: Get current task definition JSON and clean it
         run: |
-          TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition $ECS_TASK_FAMILY)
-          NEW_TASK_DEF=$(echo $TASK_DEFINITION | jq --arg IMAGE_URI "$(aws ecr describe-repositories --repository-names $ECR_REPO --query "repositories[0].repositoryUri" --output text):latest" '.taskDefinition | .containerDefinitions[0].image = $IMAGE_URI')
-          echo $NEW_TASK_DEF > new-task-def.json
-          aws ecs register-task-definition --cli-input-json file://new-task-def.json
-          aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment
+         aws ecs describe-task-definition --task-definition $ECS_TASK_FAMILY \
+         --query "taskDefinition.{containerDefinitions:containerDefinitions, family:family, taskRoleArn:taskRoleArn, executionRoleArn:executionRoleArn, networkMode:networkMode, volumes:volumes, placementConstraints:placementConstraints, requiresCompatibilities:requiresCompatibilities, cpu:cpu, memory:memory}" \
+         > task-def.json
+         cat task-def.json
+
+         - name: Register new task definition
+           run: |
+           aws ecs register-task-definition --cli-input-json file://task-def.json
